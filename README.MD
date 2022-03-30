@@ -1,4 +1,4 @@
-#Simple microservices project
+# Simple microservices project
 
 Two services
 - student
@@ -14,4 +14,4 @@ Sleuth logging
 
 Spinnaker automatic config
 
-Running on docker
+Running on Docker
