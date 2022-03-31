@@ -1,0 +1,26 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: STUDENT-SERVICE
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/students/**
+        - id: GRADE-SERVICE
+          uri: lb://GRADE-SERVICE
+          predicates:
+            - Path=/grades/**
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9003/eureka
+  instance:
+    hostname: localhost
