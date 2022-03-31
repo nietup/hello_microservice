@@ -2,6 +2,7 @@ package hello.microservice.studentservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.cloud.client.loadbalancer.LoadBalanced
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 import org.springframework.context.annotation.Bean
 import org.springframework.web.client.RestTemplate
@@ -10,6 +11,7 @@ import org.springframework.web.client.RestTemplate
 @EnableEurekaClient
 class StudentServiceApplication {
 	@Bean
+	@LoadBalanced
 	fun restTemplate() : RestTemplate {
 		return RestTemplate()
 	}

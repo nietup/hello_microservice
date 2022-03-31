@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate
 @RequestMapping("/students")
 class StudentController(private val restTemplate: RestTemplate) {
 
-    private val URI = "http://localhost:9001/grades/"
+    private val URI = "http://GRADE-SERVICE/grades/"
 
     @GetMapping("/{studentId}")
     fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade {
