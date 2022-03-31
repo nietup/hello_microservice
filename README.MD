@@ -14,5 +14,7 @@ Running on Docker
 
 Sleuth logging
 
+resilience4j fallback
+
 Spinnaker automatic config
 
