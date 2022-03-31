@@ -10,8 +10,9 @@ Eureka service registry
 
 API Gateway
 
+Running on Docker
+
 Sleuth logging
 
 Spinnaker automatic config
 
-Running on Docker
