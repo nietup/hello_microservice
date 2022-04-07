@@ -1,5 +1,7 @@
 # Simple microservices project
 
+Based on tutorials from [Daily Code Buffer](https://www.youtube.com/channel/UC4VZwhJ4T42SVHy9QbZ5rKw)
+
 Two services
 - student
   - get students with grades
@@ -10,7 +12,7 @@ Eureka service registry
 
 API Gateway
 
-Running on Docker
+Running on Docker + K8S
 
 Sleuth logging
 
