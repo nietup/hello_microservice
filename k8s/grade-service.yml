@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grade-service-app
+  labels:
+        app: grade-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grade-service-app
+  template:
+    metadata:
+      labels:
+        app: grade-service-app
+    spec:
+      containers:
+      - name: grade-service-app
+        image: nietup/grade-service:0.0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9001
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  grade-service-app
+spec:
+  selector:
+    app:  grade-service-app
+  ports:
+  - name:  name-of-the-port
+    port:  80
+    targetPort:  9001
