@@ -12,11 +12,10 @@ Eureka service registry
 
 API Gateway
 
-Running on Docker + K8S
-
-Sleuth logging
-
 resilience4j fallback
 
 Spinnaker automatic config
 
+Running on Docker + K8S
+
+Sleuth logging
