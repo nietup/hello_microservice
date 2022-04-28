@@ -12,9 +12,9 @@ Eureka service registry
 
 API Gateway
 
-resilience4j fallback
-
 Spinnaker automatic config
+
+resilience4j fallback
 
 Running on Docker + K8S
 
