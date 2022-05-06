@@ -4,4 +4,8 @@ server:
 spring:
   application:
     name: STUDENT-SERVICE
-
+  cloud:
+    config:
+      enabled: true
+  config:
+    import: configserver:http://localhost:9005
