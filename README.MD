@@ -12,7 +12,7 @@ Eureka service registry
 
 API Gateway
 
-Spinnaker automatic config
+Cloud config server
 
 resilience4j fallback
 
