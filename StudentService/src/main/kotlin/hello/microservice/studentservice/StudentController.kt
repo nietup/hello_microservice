@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
 
+private const val URI = "http://GRADE-SERVICE/grades/"
+
 @RestController
 @RequestMapping("/students")
 class StudentController(private val restTemplate: RestTemplate) {
-
-    private val URI = "http://GRADE-SERVICE/grades/"
 
     @GetMapping("/{studentId}")
     fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade {
