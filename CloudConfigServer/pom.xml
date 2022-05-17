@@ -95,7 +95,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>DOCKER USERNAME/IMAGE NAME</repository>
+					<repository>nietup/cloud-config-server</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>
