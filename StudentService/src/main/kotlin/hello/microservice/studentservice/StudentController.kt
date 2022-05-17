@@ -9,20 +9,23 @@ import org.springframework.web.client.RestTemplate
 
 @RestController
 @RequestMapping("/students")
-class StudentController(private val restTemplate: RestTemplate,
-                        private val circuitBreakerFactory: Resilience4JCircuitBreakerFactory) {
+class StudentController(
+    private val restTemplate: RestTemplate,
+    private val circuitBreakerFactory: Resilience4JCircuitBreakerFactory
+) {
 
     companion object {
         private const val URI = "http://GRADE-SERVICE/grades/"
     }
 
     @GetMapping("/{studentId}")
-    fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade {
-        return circuitBreakerFactory.create("student").run( {
-            val grade = restTemplate.getForObject(URI + studentId, Grade::class.java)
+    fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade =
+        circuitBreakerFactory
+            .create("student")
+            .run({
+                val grade = restTemplate.getForObject(URI + studentId, Grade::class.java)
 
-            StudentGrade(Student("Sheran Aśtar", 0), grade!!)
-        },
-            { StudentGrade(Student("fallback", 0), Grade(0.0, ""))})
-    }
+                StudentGrade(Student("Sheran Aśtar", 0), grade!!)
+            },
+                { StudentGrade(Student("fallback", 0), Grade(0.0, "")) })
 }
