@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 class GradeController {
     @GetMapping("/{studentId}")
     fun getGrade(@PathVariable studentId: Int): Grade {
+        Thread.sleep(3000)
         return Grade(5.0*Math.random(), "Excellent")
     }
 }
