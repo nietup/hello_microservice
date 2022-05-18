@@ -6,9 +6,7 @@ spring:
     name: STUDENT-SERVICE
   cloud:
     config:
-      enabled: true
-  config:
-    import: configserver:http://localhost:9005
+      enabled: false
 
 resilience4j:
   timelimiter:

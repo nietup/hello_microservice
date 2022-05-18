@@ -16,9 +16,7 @@ spring:
           predicates:
             - Path=/grades/**
     config:
-      enabled: true
-  config:
-    import: configserver:http://localhost:9005
+      enabled: false
 
 eureka:
   instance:
