@@ -1,26 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway
+  name: api-gateway-app
   labels:
-        app: api-gateway
+        app: api-gateway-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-gateway
+      app: api-gateway-app
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: api-gateway-app
     spec:
       containers:
-      - name: api-gateway
+      - name: api-gateway-app
         image: nietup/api-gateway:0.0.1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         imagePullPolicy: Always
         ports:
         - containerPort: 9004
@@ -34,7 +30,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: api-gateway
+    app: api-gateway-app
   ports:
   - port: 80
     targetPort: 9004
+    protocol: TCP

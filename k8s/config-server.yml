@@ -1,26 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server
+  name: config-server-app
   labels:
-        app: config-server
+        app: config-server-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: config-server
+      app: config-server-app
   template:
     metadata:
       labels:
-        app: config-server
+        app: config-server-app
     spec:
       containers:
-      - name: config-server
+      - name: config-server-app
         image: nietup/cloud-config-server:0.0.1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        imagePullPolicy: Always
         ports:
         - containerPort: 9005
 
@@ -32,7 +29,7 @@ metadata:
   name: config-server-svc
 spec:
   selector:
-    app: config-server
+    app: config-server-app
   ports:
   - port: 80
     targetPort: 9005

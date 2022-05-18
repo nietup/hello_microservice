@@ -17,10 +17,6 @@ spec:
       containers:
       - name: grade-service-app
         image: nietup/grade-service:0.0.1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         imagePullPolicy: Always
         ports:
         - containerPort: 9001
