@@ -4,11 +4,6 @@ server:
 spring:
   application:
     name: GRADE-SERVICE
-  cloud:
-    config:
-      enabled: true
-  config:
-    import: configserver:http://localhost:9005
 
 eureka:
   instance:

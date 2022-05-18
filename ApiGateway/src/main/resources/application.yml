@@ -15,10 +15,6 @@ spring:
           uri: lb://GRADE-SERVICE
           predicates:
             - Path=/grades/**
-    config:
-      enabled: true
-  config:
-    import: configserver:http://localhost:9005
 
 eureka:
   instance:
