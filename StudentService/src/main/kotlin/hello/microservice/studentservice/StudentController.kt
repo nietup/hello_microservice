@@ -1,5 +1,6 @@
 package hello.microservice.studentservice
 
+import mu.KotlinLogging
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -18,14 +19,20 @@ class StudentController(
         private const val URI = "http://GRADE-SERVICE/grades/"
     }
 
-    @GetMapping("/{studentId}")
-    fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade =
-        circuitBreakerFactory
-            .create("student")
-            .run({
-                val grade = restTemplate.getForObject(URI + studentId, Grade::class.java)
+    private val logger = KotlinLogging.logger {}
 
+    @GetMapping("/{studentId}")
+    fun getStudentWithGrade(@PathVariable studentId: Int): StudentGrade = circuitBreakerFactory
+        .create("student")
+        .run(
+            {
+                logger.info { "querying grade-service for studentId: $studentId" }
+                val grade = restTemplate.getForObject(URI + studentId, Grade::class.java)
                 StudentGrade(Student("Sheran Aśtar", 0), grade!!)
             },
-                { StudentGrade(Student("fallback", 0), Grade(0.0, "")) })
+            {
+                logger.error { "problem accessing grade-service" }
+                StudentGrade(Student("fallback", 0), Grade(0.0, ""))
+            }
+        )
 }
